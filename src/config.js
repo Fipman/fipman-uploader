@@ -1,6 +1,6 @@
 const configs = {
     "development" : {
-        "api" : "http://localhost:8081"
+        "api" : "http://localhost:8090"
     },
     "production": {
         "api" : ""

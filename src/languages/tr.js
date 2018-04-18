@@ -3,7 +3,7 @@ module.exports = {
         uploadFiles : "DOSYALARI YÜKLE"
     },
     footer : {
-        maximumUpload: "Maksimum yükleme boyutu: 10MB"
+        maximumUpload: "Maksimum yükleme boyutu: {size}"
     },
     uploader : {
         dragDropMessage : "Yüklemek için dosyalarınızı bırakın yada",

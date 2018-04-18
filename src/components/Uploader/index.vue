@@ -26,8 +26,7 @@ export default {
   },
   props: ["options"],
   mounted(){
-    const options = JSON.parse(getUrlParameter("options"));
-    this.fipman = new Fipman(options);
+    this.fipman = new Fipman(this.options);
   },
   methods: {
     startUpload: function(files) {
@@ -42,6 +41,8 @@ export default {
           },
           "*"
         );
+      }, x => {
+        Object.assign(this, { activeView : 0, dropZoneActive : false});
       });
     },
     cancelUpload: function() {
@@ -56,12 +57,7 @@ export default {
         for (var i = 0; i < ev.dataTransfer.items.length; i++) {
           if (ev.dataTransfer.items[i].kind === "file") {
             var file = ev.dataTransfer.items[i].getAsFile();
-
-            if (
-              this.options.allowFiles === "*" ||
-              this.options.allowFiles.includes(file.name.split(".").pop())
-            )
-              files.push(file);
+            files.push(file);
           }
         }
         this.startUpload(this.options.allowMultipleUpload ? files : [files[0]]);

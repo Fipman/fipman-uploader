@@ -14,6 +14,7 @@ let language = sdkOptions.lang || 'en';
 
 const i18n = new VueI18n({
   locale: language, // set locale
+  fallbackLocale: 'en',
   messages : {tr, en}, // set locale messages
 })
 

@@ -12,7 +12,7 @@
           </div>
         </div>
     </div>
-  <Footer />
+  <Footer v-bind:maxSize="options.maxFileSize" v-bind:allowFiles="options.allowFiles" />
   <input id="fileInputMultiple" multiple v-bind:accept="options.allowFiles" type="file" style="display:none" v-on:change="onFileUploadChange" />
   <input id="fileInput" type="file" v-bind:accept="options.allowFiles" style="display:none" v-on:change="onFileUploadChange" />
 </div>

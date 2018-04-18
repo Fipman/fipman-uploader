@@ -10,6 +10,7 @@ class AmazonUploader extends UploaderBase {
     getClientCridentials() {
         const apiKey = this.apiKey;
         const fileNames = this.uploadQueue.map(x => x.fileName);
+        const requestBaseURL = process.env['API_BASE_URL'] || config.api;
         return axios.get(`${config.api}/clients/${apiKey}/s3?fileNames=${fileNames}`)
             .then(x => x.data);
     }
@@ -26,8 +27,9 @@ class AmazonUploader extends UploaderBase {
     }
 
     start() {
-
         return new Promise((resolve, reject) => {
+            if(this.uploadQueue.length === 0)
+                return reject('no file for upload');
             this.getClientCridentials().then(results => {
                 if (results.errorMessage) {
                     reject(results.errorMessage);
