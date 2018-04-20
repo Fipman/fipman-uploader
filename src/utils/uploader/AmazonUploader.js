@@ -1,6 +1,6 @@
 import UploaderBase from './UploaderBase';
 import axios from 'axios';
-const config = require('../../config').init();
+const config = require('../../config');
 
 class AmazonUploader extends UploaderBase {
     constructor(options) {
@@ -10,8 +10,7 @@ class AmazonUploader extends UploaderBase {
     getClientCridentials() {
         const apiKey = this.apiKey;
         const fileNames = this.uploadQueue.map(x => x.fileName);
-        const requestBaseURL = process.env['API_BASE_URL'] || config.api;
-        return axios.get(`${config.api}/clients/${apiKey}/s3?fileNames=${fileNames}`)
+        return axios.get(`${config.api_url}/clients/${apiKey}/s3?fileNames=${fileNames}`)
             .then(x => x.data);
     }
 

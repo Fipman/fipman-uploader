@@ -2,7 +2,7 @@ import EventEmitter from 'events';
 import File from './File';
 
 class UploaderBase {
-    constructor(options) {        
+    constructor(options) {       
         this.apiKey = options.apiKey;
         this.allowMultipleUpload = options.allowMultipleUpload;
         this.allowFiles = options.allowFiles || "*";

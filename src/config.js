@@ -1,17 +1,3 @@
-const configs = {
-    "development" : {
-        "api" : "http://localhost:8090"
-    },
-    "production": {
-        "api" : ""
-    }
-}
-
-
-const init = () => {
-    return configs[process.env.NODE_ENV];
-}
-
-export {
-    init
-}
+module.exports = {
+    api_url : process.env.API_URL
+};
